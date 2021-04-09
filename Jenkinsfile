@@ -5,32 +5,25 @@ pipeline {
       /* step 1: clone the repo to workspace*/
       steps {
         sh "cd /opt/tf"
+        echo "CDCDCDCDCD"
       }
     }
     stage("clone from git") {
-      /* step 1: clone the repo to workspace*/
       steps {
         sh "git pull"
+        echo "PULLLLLLLLLLLLL"
       }
     }
-    // stage("build img") {
-    //   steps {
-    //     sh "docker build -t myflask:v1 ."
-    //   }
-    // }
-    // stage("run img") {
-    //   steps {
-    //     sh "docker run -d --name myflask myflask:v1"
-    //   }
-    // }
-    // stage("test") {
-    //   steps {
-    //     echo "testing"
-    //   }
-    // }
+    stage("pip install") {
+      steps {
+        sh "python3 -m pip instll -r  /opt/tf/requirements.txt"
+        echo "PIPIPIPIPIPIPIPIP"
+      }
+    }
     stage("run app.py") {
       steps {
         sh "python3 /opt/tf/app.py"
+        echo "RUNRUNRUN"
       }
     }
   }
