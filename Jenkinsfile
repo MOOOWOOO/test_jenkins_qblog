@@ -1,4 +1,10 @@
 pipeline {
+  environment {
+      // 部署远程主机ip地址,需要通过密钥的方式设置免密登录
+      remoteIp = "192.168.0.234"
+      remoteName = "root"
+      remotePort='22'
+  }
   agent any
   stages {
     stage("cd /opt/tf") {
